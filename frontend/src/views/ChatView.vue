@@ -21,19 +21,19 @@ const sendMessage = () => {
 
 <template>
     <div class="grow flex flex-row">
-        <div class="flex flex-col w-64 grow-0 border-r-2 border-r-black p-4">
+        <div class="flex flex-col w-64 grow-0 border-r-2 border-r-slate-600 p-4">
             <input class="ring rounded focus:outline-none focus:ring-red-600 p-1" v-model="username">
             <button class="ring rounded ring-green-600 bg-green-400 p-1" @click="socket.setUsername(username)">Change
                 username</button>
         </div>
         <div class="flex flex-col grow">
-            <div class="overflow-y-auto p-2 grow">
+            <div class="overflow-y-auto p-2 grow z-0 bg-green-400">
                 <div v-for="message in messages" :key="message.message" class="m-1">
                     <MessageUI :message="message" />
                 </div>
             </div>
-            <div class="flex flex-row p-4 bg-white shadow-2xl gap-4">
-                <input class="grow ring rounded focus:outline-none focus:ring-red-600 p-3" v-model="text"
+            <div class="flex flex-row p-4 bg-white shadow-2xl gap-4 z-50 border-t-2 border-t-slate-600">
+                <input class="grow ring rounded focus:outline-none focus:ring-green-400 p-3 ring-slate-600" v-model="text"
                     @keyup.enter="sendMessage()">
             </div>
         </div>

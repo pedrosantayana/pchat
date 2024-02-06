@@ -5,7 +5,7 @@ import { faComments } from '@fortawesome/free-solid-svg-icons'
 </script>
 
 <template>
-  <nav>
+  <nav class=" z-50">
     <div class="flex flex-row justify-between bg-white p-4 shadow-2xl">
       <div>
       <a href="/" class="text-3xl font-semibold font-mono select-none">

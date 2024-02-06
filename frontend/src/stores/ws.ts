@@ -1,30 +1,30 @@
 import { defineStore } from 'pinia'
-import { ref, type Ref } from 'vue';
+import { ref, type Ref } from 'vue'
 
 type SocketState = {
-  socket: WebSocket | null;
-  username: string;
-  callback: ((message: string) => void) | undefined;
-  messages: Ref<Message[]>;
+  socket: WebSocket | null
+  username: string
+  callback: ((message: string) => void) | undefined
+  messages: Ref<Message[]>
 }
 
 export type Message = {
-  username: string;
-  message: string;
-  own: boolean;
+  username: string
+  message: string
+  own: boolean
 }
 
 export const useSocketStore = defineStore('ws', () => {
-      const state: SocketState = {
-        socket: null,
-        username: '',
-        callback: undefined,
-        messages: ref<Message[]>([])
-      };
+  const state: SocketState = {
+    socket: null,
+    username: '',
+    callback: undefined,
+    messages: ref<Message[]>([])
+  }
 
   const createConnection = (username: string) => {
     state.username = username
-    state.socket = new WebSocket(`ws://192.168.0.142:3000/chat?username=${state.username}`)
+    state.socket = new WebSocket(`ws://pchat-backend.fly.dev/chat?username=${state.username}`)
 
     state.socket.onclose = () => {
       console.log('WebSocket is closed now.')
@@ -40,7 +40,7 @@ export const useSocketStore = defineStore('ws', () => {
 
     state.socket.onmessage = (event) => {
       console.log('Message received:', event.data)
-      const data: {username: string, message: string} = JSON.parse(event.data)
+      const data: { username: string; message: string } = JSON.parse(event.data)
       const msg: Message = {
         username: data.username,
         message: data.message,
@@ -74,5 +74,5 @@ export const useSocketStore = defineStore('ws', () => {
     state.callback = cb
   }
 
-  return { createConnection, sendMessage, state, setUsername, setCallback}
+  return { createConnection, sendMessage, state, setUsername, setCallback }
 })
