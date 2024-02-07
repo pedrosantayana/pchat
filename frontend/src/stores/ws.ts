@@ -24,7 +24,7 @@ export const useSocketStore = defineStore('ws', () => {
 
   const createConnection = (username: string) => {
     state.username = username
-    state.socket = new WebSocket(`ws://pchat-backend.fly.dev/chat?username=${state.username}`)
+    state.socket = new WebSocket(`wss://pchat-backend.fly.dev/chat?username=${state.username}`)
 
     state.socket.onclose = () => {
       console.log('WebSocket is closed now.')
