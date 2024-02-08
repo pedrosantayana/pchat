@@ -19,7 +19,7 @@ const sendMessage = () => {
 </script>
 
 <template>
-  <div class="grow  flex flex-row bg-white">
+<div class="grow  flex flex-row bg-white">
     <div class="flex flex-col w-64 grow-0 border-r-2 border-r-slate-600 p-4">
       <input class="ring rounded focus:outline-none focus:ring-blue-400 p-1" v-model="username">
       <button class="ring rounded ring-blue-600 bg-blue-400 p-1" @click="socket.setUsername(username)">
