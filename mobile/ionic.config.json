@@ -1,0 +1,7 @@
+{
+  "name": "PChat",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
